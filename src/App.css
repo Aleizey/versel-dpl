@@ -1,53 +1,80 @@
-.app-container {
+body {
+  margin: 0;
   font-family: Arial, sans-serif;
-  line-height: 1.6;
+  background-color: #f4f4f9;
   color: #333;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .header {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
   text-align: center;
-  padding: 20px 0;
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #ddd;
+  font-size: 24px;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.navbar {
+.layout {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  flex: 1;
+  overflow: hidden;
 }
 
-.logo-link img {
-  width: 50px;
-  height: 50px;
-}
-
-.hero {
-  text-align: center;
-  margin: 40px 0;
-}
-
-.counter-section {
-  text-align: center;
-  margin: 20px 0;
-}
-
-.card {
+.sidebar {
+  width: 250px;
+  background-color: #ffffff;
   padding: 20px;
-  border: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.feed {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.post {
+  background: white;
+  padding: 20px;
   border-radius: 8px;
-  display: inline-block;
-  background: #fefefe;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post h2 {
+  margin: 0 0 10px 0;
 }
 
 button {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -56,10 +83,40 @@ button:hover {
   background-color: #0056b3;
 }
 
-footer {
-  text-align: center;
-  margin-top: 40px;
-  padding: 10px 0;
-  background-color: #f8f9fa;
-  border-top: 1px solid #ddd;
+.comments {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.comment-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.comment-input button {
+  flex-shrink: 0;
+}
+
+.comment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comment-list li {
+  background: #f4f4f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }

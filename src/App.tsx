@@ -1,49 +1,64 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
+  const [comments, setComments] = useState<string[]>([]);
+  const [newComment, setNewComment] = useState('');
+
+  const addComment = () => {
+    if (newComment.trim()) {
+      setComments([...comments, newComment]);
+      setNewComment('');
+    }
+  };
 
   return (
-    <div className="app-container">
+    <div className="app">
       <header className="header">
-        <nav className="navbar">
-          <a href="https://vite.dev" target="_blank" className="logo-link">
-            <img src={viteLogo} className="logo" alt="Vite logo" />
-          </a>
-          <a href="https://react.dev" target="_blank" className="logo-link">
-            <img src={reactLogo} className="logo react" alt="React logo" />
-          </a>
-        </nav>
-        <h1>Bienvenido a Mi Página</h1>
+        <h1>SocialVite</h1>
       </header>
 
-      <main className="main-content">
-        <section className="hero">
-          <h2>Hola, soy Alejandro Versel</h2>
-          <p>Explora esta página para aprender sobre React y Vite.</p>
-        </section>
+      <div className="layout">
+        <aside className="sidebar">
+          <h2>Menú</h2>
+          <ul>
+            <li>Inicio</li>
+            <li>Perfil</li>
+            <li>Configuración</li>
+          </ul>
+        </aside>
 
-        <section className="counter-section">
-          <h2>Contador Interactivo</h2>
-          <div className="card">
-            <button onClick={() => setCount((count) => count + 1)}>
-              El contador está en {count}
-            </button>
+        <main className="feed">
+          <section className="post">
+            <h2>Publicación Principal</h2>
             <p>
-              Edita el archivo <code>src/App.tsx</code> para personalizar esta sección.
+              Bienvenido a SocialVite, una red social construida con React y Vite.
             </p>
-          </div>
-        </section>
-      </main>
+            <button onClick={() => setCount((count) => count + 1)}>
+              Me gusta ({count})
+            </button>
+          </section>
 
-      <footer className="footer">
-        <p>
-          © 2025 Alejandro Versel. Aprende más haciendo clic en los logos de Vite y React.
-        </p>
-      </footer>
+          <section className="comments">
+            <h3>Comentarios</h3>
+            <div className="comment-input">
+              <input
+                type="text"
+                value={newComment}
+                placeholder="Escribe un comentario..."
+                onChange={(e) => setNewComment(e.target.value)}
+              />
+              <button onClick={addComment}>Enviar</button>
+            </div>
+            <ul className="comment-list">
+              {comments.map((comment, index) => (
+                <li key={index}>{comment}</li>
+              ))}
+            </ul>
+          </section>
+        </main>
+      </div>
     </div>
   );
 }
